@@ -16,4 +16,4 @@
 - Укажите сущности БД, которые необходимы для выполнения данной задачи.
 - Какие ограничения в реализации вы видите?
 
-<https://docs.google.com/document/d/1CflcV9T4l6eYePIMCPGJuRmbryhY9sXuZDqxixSTtEs/edit?usp=sharing>
+## [решение](https://docs.google.com/document/d/1CflcV9T4l6eYePIMCPGJuRmbryhY9sXuZDqxixSTtEs/edit?usp=sharing)
