@@ -49,8 +49,7 @@
     <bpmn:sequenceFlow id="Flow_1v8b8n6" sourceRef="Event_021uol4" targetRef="Event_1cqpdyd" />
     <bpmn:sequenceFlow id="Flow_01chy29" sourceRef="Event_1cqpdyd" targetRef="Gateway_16lchga" />
     <bpmn:sequenceFlow id="Flow_1fcrwkh" name="да" sourceRef="Gateway_16lchga" targetRef="Activity_0bn2iqj" />
-    <bpmn:sequenceFlow id="Flow_11ari4c" sourceRef="Activity_0bn2iqj" targetRef="Event_03sym9l" />
-    <bpmn:endEvent id="Event_1nbwdav" name="отказ">
+    <bpmn:endEvent id="Event_1nbwdav" name="отказ в записи на прием">
       <bpmn:incoming>Flow_0wktlb9</bpmn:incoming>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1oy4sx1" />
     </bpmn:endEvent>
@@ -65,18 +64,20 @@
       <bpmn:outgoing>Flow_1fcrwkh</bpmn:outgoing>
       <bpmn:outgoing>Flow_0wktlb9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Activity_0bn2iqj" name="формируются талоны на посещение">
+    <bpmn:task id="Activity_0bn2iqj" name="запись данных о приеме, формирование талонов на прием">
       <bpmn:incoming>Flow_1fcrwkh</bpmn:incoming>
-      <bpmn:outgoing>Flow_11ari4c</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0oklgc8</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:endEvent id="Event_03sym9l">
-      <bpmn:incoming>Flow_11ari4c</bpmn:incoming>
+    <bpmn:sequenceFlow id="Flow_0oklgc8" sourceRef="Activity_0bn2iqj" targetRef="Event_0afeyqi" />
+    <bpmn:endEvent id="Event_0afeyqi" name="информирование пользователей о посещении">
+      <bpmn:incoming>Flow_0oklgc8</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_11btbd5" />
     </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_14fpasv">
       <bpmndi:BPMNShape id="Participant_1qd9c1i_di" bpmnElement="Participant_1qd9c1i" isHorizontal="true">
-        <dc:Bounds x="156" y="40" width="1244" height="310" />
+        <dc:Bounds x="130" y="40" width="1310" height="310" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1o4pfwl_di" bpmnElement="Gateway_1o4pfwl" isMarkerVisible="true">
@@ -114,7 +115,7 @@
       <bpmndi:BPMNShape id="Event_1nbwdav_di" bpmnElement="Event_1nbwdav">
         <dc:Bounds x="1142" y="72" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1147" y="115" width="28" height="14" />
+          <dc:Bounds x="1124" y="115" width="74" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1cqpdyd_di" bpmnElement="Event_1cqpdyd">
@@ -133,8 +134,11 @@
         <dc:Bounds x="1180" y="170" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_03sym9l_di" bpmnElement="Event_03sym9l">
-        <dc:Bounds x="1322" y="192" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_0afeyqi_di" bpmnElement="Event_0afeyqi">
+        <dc:Bounds x="1352" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1325" y="235" width="90" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0e4wvf5_di" bpmnElement="Flow_0e4wvf5">
         <di:waypoint x="248" y="210" />
@@ -187,10 +191,6 @@
           <dc:Bounds x="1125" y="192" width="12" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_11ari4c_di" bpmnElement="Flow_11ari4c">
-        <di:waypoint x="1280" y="210" />
-        <di:waypoint x="1322" y="210" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0wktlb9_di" bpmnElement="Flow_0wktlb9">
         <di:waypoint x="1090" y="185" />
         <di:waypoint x="1090" y="90" />
@@ -199,8 +199,12 @@
           <dc:Bounds x="1096" y="165" width="18" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oklgc8_di" bpmnElement="Flow_0oklgc8">
+        <di:waypoint x="1280" y="210" />
+        <di:waypoint x="1352" y="210" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0lo3cuj_di" bpmnElement="Participant_0lo3cuj" isHorizontal="true">
-        <dc:Bounds x="156" y="380" width="1244" height="60" />
+        <dc:Bounds x="130" y="380" width="1310" height="60" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0nscjqh_di" bpmnElement="Flow_0nscjqh">
